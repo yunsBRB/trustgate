@@ -1,0 +1,8 @@
+<templates xml:space="preserve">
+    <t t-name="trustgate.ScoreField">
+        <div class="d-flex align-items-center gap-2">
+            <progress t-att-value="score" max="100" t-att-aria-label="props.record.fields[props.name].string"/>
+            <span><t t-esc="score"/> / 100</span>
+        </div>
+    </t>
+</templates>

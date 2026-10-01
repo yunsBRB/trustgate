@@ -1,0 +1,5 @@
+id,name,model_id,group_id/id,operation,domain
+request_company,Payment company boundary,trustgate.payment.request,,crud,"[('company_id', 'in', company_ids)]"
+request_operator,Own payment requests,trustgate.payment.request,trustgate.group_operator,cru,"[('requested_by', '=', user.id)]"
+request_reviewer,Company payment review,trustgate.payment.request,trustgate.group_reviewer,ru,
+review_wizard,Review wizard,trustgate.review.wizard,trustgate.group_reviewer,crud,

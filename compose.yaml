@@ -1,0 +1,35 @@
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U odoo -d postgres]
+      interval: 5s
+      retries: 15
+  odoo:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    ports: ["127.0.0.1:8069:8069"]
+    environment:
+      PGPASSWORD: ${POSTGRES_PASSWORD}
+    command:
+      - --addons-path=/opt/odoo/addons,/mnt/extra-addons
+      - --data-dir=/var/lib/odoo
+      - --http-interface=0.0.0.0
+      - --db_host=db
+      - --db_user=odoo
+      - --database=trustgate
+      - --db-filter=^trustgate$$
+      - --no-database-list
+    volumes:
+      - odoo-data:/var/lib/odoo
+volumes:
+  pgdata:
+  odoo-data:

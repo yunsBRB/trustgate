@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Odoo 20",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${env:ODOO_SOURCE}/odoo-bin",
+      "args": [
+        "--addons-path=${env:ODOO_SOURCE}/addons,${workspaceFolder}/addons",
+        "-d",
+        "trustgate",
+        "-u",
+        "trustgate",
+        "--dev=xml"
+      ],
+      "console": "integratedTerminal",
+      "justMyCode": false
+    }
+  ]
+}

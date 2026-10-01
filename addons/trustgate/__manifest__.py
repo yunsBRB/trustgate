@@ -1,0 +1,12 @@
+{'name': 'TrustGate',
+ 'version': '20.0.1.0.0',
+ 'summary': 'Supplier payment risk review',
+ 'category': 'Accounting',
+ 'author': 'Younes Berebia',
+ 'license': 'LGPL-3',
+ 'depends': ['mail', 'web'],
+ 'data': ['security/groups.xml', 'security/ir.access.csv', 'views/payment_request_views.xml'],
+ 'assets': {'web.assets_backend': ['trustgate/static/src/score_field.js',
+                                   'trustgate/static/src/score_field.xml']},
+ 'application': True,
+ 'installable': True}
